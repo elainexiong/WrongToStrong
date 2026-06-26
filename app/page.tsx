@@ -1010,6 +1010,12 @@ function AddQuestionScreen({
     });
   };
 
+  const acceptScreenshot = (nextFile: File | null) => {
+    setFile(nextFile);
+    setUploaded(Boolean(nextFile));
+    setSaved(false);
+  };
+
   const canSave =
     uploaded &&
     form.testType &&
@@ -1054,7 +1060,23 @@ function AddQuestionScreen({
   return (
     <div className="two-column-form">
       <Panel className="form-panel" title="Add Question">
-        <label className={clsx("upload-zone", uploaded && "uploaded")}>
+        <label
+          className={clsx("upload-zone", uploaded && "uploaded")}
+          onPaste={(event) => {
+            const pastedFile = Array.from(event.clipboardData.items)
+              .find((item) => item.kind === "file" && item.type.startsWith("image/"))
+              ?.getAsFile();
+            if (!pastedFile) return;
+
+            event.preventDefault();
+            acceptScreenshot(
+              new File([pastedFile], pastedFile.name || `pasted-question-${Date.now()}.png`, {
+                type: pastedFile.type || "image/png"
+              })
+            );
+          }}
+          tabIndex={0}
+        >
           <Upload size={28} />
           <strong>{uploaded ? "Screenshot ready" : "Upload screenshot"}</strong>
           <span>{file ? file.name : "Private file, compressed before storage"}</span>
@@ -1062,9 +1084,7 @@ function AddQuestionScreen({
             accept="image/*"
             onChange={(event) => {
               const nextFile = event.target.files?.[0] ?? null;
-              setFile(nextFile);
-              setUploaded(Boolean(nextFile));
-              setSaved(false);
+              acceptScreenshot(nextFile);
             }}
             type="file"
           />
