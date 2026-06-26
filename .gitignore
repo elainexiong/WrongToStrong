@@ -1,0 +1,13 @@
+.next/
+node_modules/
+.npm-cache/
+.DS_Store
+*.swp
+.env
+.env.local
+.env*.local
+supabase/.temp/
+dist/
+coverage/
+*.tsbuildinfo
+vercel.json
