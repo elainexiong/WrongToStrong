@@ -1094,7 +1094,7 @@ function AddQuestionScreen({
           <SelectField label="Section" value={form.sectionModule} onChange={(value) => updateField("sectionModule", value)} options={sectionOptions} />
           <SelectField label="Category" value={form.topic} onChange={(value) => updateField("topic", value)} options={formCategoryOptions} />
           <SelectField label="Subcategory optional" value={form.subtopic} onChange={(value) => updateField("subtopic", value)} options={formSubcategoryOptions} />
-          <SelectField label="Error type" value={form.errorType} onChange={(value) => updateField("errorType", value)} options={["Skipped", "Misread question", "Careless calculation", "Concept gap", "Wrong setup", "Too slow", "Other"]} />
+          <SelectField label="Error type" value={form.errorType} onChange={(value) => updateField("errorType", value)} options={["Skipped", "Incorrect answer", "Misread question", "Careless calculation", "Concept gap", "Wrong setup", "Too slow", "Other"]} />
           <TextField label="Correct answer" value={form.correctAnswer} onChange={(value) => updateField("correctAnswer", value)} placeholder="A, B, C, 42, x = 7" />
           <TextField label="Source optional" value={form.source} onChange={(value) => updateField("source", value)} placeholder="Bluebook, Khan Academy, Book" />
           <TextField label="Test name optional" value={form.testName} onChange={(value) => updateField("testName", value)} placeholder="Practice Test 1" />
