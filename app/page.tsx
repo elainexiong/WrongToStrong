@@ -1348,7 +1348,7 @@ function QuestionBankScreen({
             <SelectField label="Section" value={currentDraft.section ?? "Math"} onChange={(value) => updateDraft("section", value)} options={sectionOptions} />
             <SelectField label="Category" value={draftTopic} onChange={(value) => updateDraft("topic", value)} options={draftCategoryOptions} />
             <SelectField label="Subcategory optional" value={currentDraft.subtopic ?? ""} onChange={(value) => updateDraft("subtopic", value)} options={draftSubcategoryOptions} />
-            <SelectField label="Error type" value={currentDraft.errorType ?? ""} onChange={(value) => updateDraft("errorType", value)} options={["Misread question", "Careless calculation", "Concept gap", "Wrong setup", "Too slow", "Other"]} />
+            <SelectField label="Error type" value={currentDraft.errorType ?? ""} onChange={(value) => updateDraft("errorType", value)} options={["Skipped", "Incorrect answer", "Misread question", "Careless calculation", "Concept gap", "Wrong setup", "Too slow", "Other"]} />
             <TextField label="Correct answer" value={currentDraft.correctAnswer ?? ""} onChange={(value) => updateDraft("correctAnswer", value)} placeholder="A, B, C, 42, x = 7" />
             <TextField label="Source optional" value={currentDraft.source ?? ""} onChange={(value) => updateDraft("source", value)} placeholder="Bluebook" />
             <TextField label="Test name optional" value={currentDraft.testName ?? ""} onChange={(value) => updateDraft("testName", value)} placeholder="Practice Test 1" />
